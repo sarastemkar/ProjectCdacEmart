@@ -1,0 +1,49 @@
+-- Create the 'emart' database
+CREATE DATABASE emart;
+
+-- Create the 'category_master' table
+
+
+CREATE TABLE category_master (
+    catmaster_id  INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    cat_id CHAR NOT NULL,
+    subcat_id CHAR NOT NULL,
+    cat_name VARCHAR(255),
+    cat_image_path VARCHAR(255),
+    flag BINARY, -- Assuming 'flag' is a binary column
+    UNIQUE KEY unique_category (cat_id, subcat_id) -- Added a unique constraint for cat_id and subcat_id
+);
+
+-- Create the 'product_master' table
+
+
+CREATE TABLE product_master (
+    prod_id  INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    catmaster_id  INT NOT NULL,
+    prod_short_desc TEXT,
+    prod_long_desc LONGTEXT,
+    mrp_price  MEDIUMINT NOT NULL,
+    cardholders_price MEDIUMINT, -- Assuming 'cardholders price' is intended to be a separate column
+    points_to_be_redeemed  INT,
+    FOREIGN KEY (catmaster_id) REFERENCES category_master(catmaster_id)
+);
+
+-- Create the 'prod_detail_master' table
+
+CREATE TABLE prod_detail_master(
+    prod_detail_id  INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    prod_id INT NOT NULL,
+    config_id INT NOT NULL,
+    config_details MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (prod_id) REFERENCES product_master(prod_id),
+    FOREIGN KEY (config_id) REFERENCES config_master(config_id)  -- Corrected the foreign key declaration
+);
+
+-- Create the 'config_master' table
+
+CREATE TABLE config_master (
+    config_id  INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    config_name VARCHAR(255) NOT NULL
+);
+
+
