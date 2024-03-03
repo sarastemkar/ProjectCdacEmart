@@ -46,4 +46,66 @@ CREATE TABLE config_master (
     config_name VARCHAR(255) NOT NULL
 );
 
+-- Insert into the category table
+INSERT INTO category (category_name, childflag, parent_catid, cat_img_path) 
+VALUES 
+('Electronics', 0, 0, 'electronics.jpg'),
+('Clothing', 0, 0, 'clothing.jpg'),
+('Mobile Phones', 1, 1, 'mobile_phones.jpg'),
+('Laptops', 1, 1, 'laptops.jpg'),
+('T-Shirts', 1, 2, 't_shirts.jpg'),
+('Jeans', 1, 2, 'jeans.jpg');
+
+-- Insert into the config table
+INSERT INTO config (config_name) 
+VALUES 
+('Color'),
+('Size'),
+('Material');
+
+-- Insert into the customer table
+INSERT INTO customer (cust_name, cust_address, cust_phone, cust_email, cust_password, card_holder, points) 
+VALUES 
+('John Doe', '123 Main Street, Cityville', '123-456-7890', 'john@example.com', 'password12', 1, 500),
+('Jane Smith', '456 Elm Street, Townsville', '987-654-3210', 'jane@example.com', 'password45', 0, 250),
+('Alice Johnson', '789 Oak Street, Villagetown', '555-555-5555', 'alice@example.com', 'password78', 1, 750),
+('Bob Williams', '321 Pine Street, Hamletville', '111-222-3333', 'bob@example.com', 'passwordab', 0, 400),
+('saras', 'saras', '9819894842', 'ss@gmail.com', 'saras', 1, 0);
+
+-- Insert into the invoice table
+INSERT INTO invoice (invoice_date, total_amt, tax, delivery_charges, total_bill, custid) 
+VALUES 
+('2023-01-15 10:30:00', 599.99, 30, 10, 639.99, 1),
+('2023-02-20 14:45:00', 1299.99, 65, 15, 1379.99, 2),
+('2023-03-25 12:00:00', 29.99, 1.5, 12, 41.49, 3),
+('2023-04-10 09:00:00', 49.99, 2.5, 20, 72.49, 4),
+('2024-02-25 00:00:00', 455.0508474576272, 81.9091525423729, 100, 636.96, 1),
+('2024-02-25 00:00:00', 406.771186440678, 73.21881355932203, 100, 579.99, 1),
+('2024-02-25 00:00:00', 0, 0, 100, 100, 1),
+('2024-02-25 00:00:00', 847.449152542373, 152.54084745762714, 100, 1099.99, 2),
+('2024-02-25 00:00:00', 406.771186440678, 73.21881355932203, 100, 579.99, 1),
+('2024-02-25 00:00:00', 805.0762711864407, 144.91372881355932, 100, 1049.99, 1),
+('2024-02-25 00:00:00', 211.85593220338984, 38.13406779661017, 100, 349.99, 1),
+('2024-02-25 00:00:00', 211.85593220338984, 38.13406779661017, 100, 349.99, 1),
+('2024-02-25 00:00:00', 211.85593220338984, 38.13406779661017, 100, 349.99, 1),
+('2024-02-25 00:00:00', 381.3474576271187, 68.64254237288137, 100, 549.99, 1);
+
+-- Insert into the invoice_details table
+INSERT INTO invoice_details (mrp, card_holder_price, points_redeem, invoiceid, prodid, prod_name) 
+VALUES 
+(1299.99, 949.99, 200, 14, 6, 'Apple');
+
+-- Insert into the orders table
+INSERT INTO orders (shipping_add, order_date, deliverydate, cust_id, invoiceid) 
+VALUES 
+('123 Street Name, City, Country', '2024-02-23 10:00:00', '2024-02-25 12:00:00', 1, 1),
+('456 Avenue Name, City, Country', '2024-02-24 11:00:00', '2024-02-28 14:00:00', 2, 2);
+
+-- Insert into the product table
+INSERT INTO product (prod_name, prod_short_desc, prod_long_desc, mrp_price, offer_price, card_holder_price, points_redeem, imgpath, inventory_quantity, catmasterid) 
+VALUES 
+('Samsung', 'Latest smartphone', 'Description...', 599.99, 499.99, 479.99, 100, 'smartphone.jpg', 50, 3),
+('Apple', 'Powerful laptop', 'Description...', 1299.99, 999.99, 949.99, 200, 'laptop.jpg', 30, 4),
+('Nike', 'Soft cotton t-shirt', 'Description...', 29.99, 19.99, 18.99, 10, 'tshirt.jpg', 100, 5),
+('Levi\'s', 'Denim jeans', 'Description...', 49.99, 39.99, 37.99, 20, 'jeans.jpg', 80, 6);
 
