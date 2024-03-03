@@ -1,0 +1,47 @@
+.product-card {
+  padding: 20px;
+  width: 100%; /* Set width to 100% to make it adjustable */
+  max-width: 300px; /* Set max-width to limit card width */
+  background-color: transparent; /* Set background color to transparent */
+  box-shadow: none; /* Remove box shadow */
+  border: none; /* Remove border */
+  border-radius: 0; /* Optional: Remove border radius */
+}
+
+.product-card .card-body {
+  padding: 0; /* Optional: Remove padding within card body */
+}
+
+.product-image {
+  width: 100%;
+  max-height: 300px;
+}
+
+.product-name {
+  margin-top: 10px;
+}
+
+.product-short-desc {
+  color: #777;
+  margin-top: 5px;
+}
+
+.product-prices {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-offer-price {
+  font-size: 1.2em;
+  color: #e91e63;
+}
+
+.product-mrp-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.product-long-desc {
+  margin-top: 15px;
+}
